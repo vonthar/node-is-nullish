@@ -1,0 +1,56 @@
+{
+  "name": "is-nullish",
+  "version": "1.0.0",
+  "description": "Test a value for nullishness.",
+  "keywords": [
+    "is",
+    "null",
+    "nil",
+    "empty"
+  ],
+  "license": "MPL-2.0",
+  "author": {
+    "name": "vonthar",
+    "email": "vonthar@tfwno.gf"
+  },
+  "homepage": "https://github.com/vonthar/node-is-nullish",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vonthar/node-is-nullish.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vonthar/node-is-nullish/issues"
+  },
+  "main": "src/isnull.js",
+  "scripts": {
+    "test": "nyc -n src/*.js tape test/*.js",
+    "coverage": "npm test && nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint -c node_modules/@vonthar/pkgdev/etc/eslintrc.json src/*.js",
+    "docs": "jsdoc2md -v -p list -r list -t node_modules/@vonthar/pkgdev/etc/jsdoc2md.hbs src/*.js > README.md",
+    "preversion": "npm test && git add .",
+    "postversion": "git push -u origin master && git push origin master --tags && npm publish"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@vonthar/pkgdev": "git+https://github.com/vonthar/pkgdev.git",
+    "coveralls": "^2.11.12",
+    "eslint": "^2.11.1",
+    "eslint-config-xo": "^0.15.3",
+    "nyc": "^8.1.0",
+    "tape": "^4.6.0"
+  },
+  "testling": {
+    "files": "test/*.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6",
+      "ipad/6",
+      "android-browser/latest"
+    ]
+  }
+}
